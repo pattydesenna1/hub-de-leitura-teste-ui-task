@@ -3,11 +3,6 @@ import { faker } from '@faker-js/faker';
 
 describe('Testes End To End do fluxo de cadastro e login', () => {
 
-    // Se o erro persistir, altere a forma de chamar para a sintaxe antiga abaixo:
-    const nome = faker.name.fullName(); // <-- Mude de 'person' para 'name'
-    const email = faker.internet.email()
-    
-
     beforeEach(() => {
         cy.visit('http://localhost:3000/register.html');
     });
@@ -28,6 +23,5 @@ describe('Testes End To End do fluxo de cadastro e login', () => {
         cy.login(email, 'senha321');
         cy.url().should('include', 'dashboard');
         cy.get('#user-name').should('be.visible').and('contain', nome);
-
     });
 });
